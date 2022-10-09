@@ -1,43 +1,43 @@
 const mongoose = require("mongoose")
 
 const movieSchema = mongoose.Schema({
-    name:{
+    name: {
         type: String,
         require: true
     },
-    duration:{
+    duration: {
         type: String,
         require: true
     },
-    releaseDate:{
+    releaseDate: {
         type: String,
         require: true
     },
-    genre:{
+    genre: {
         type: String,
         require: true
     },
-    price:{
+    price: {
         type: String,
         require: true
     },
-    category:{
+    category: {
         type: String,
         require: true
     },
-    location:{
+    location: {
         type: [String],
         require: true
     },
-    hall:{
+    hall: {
         type: Object,
         require: true
     },
-    movieImage:{
+    image: {
         type: String,
         require: true
     },
-    creadtedOn:{
+    creadtedOn: {
         type: Date,
         default: new Date()
     }

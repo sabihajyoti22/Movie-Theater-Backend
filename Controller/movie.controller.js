@@ -1,6 +1,6 @@
 const movieSchema = require("../Model/movie.model")
 
-const getMovie = async(req,res) => {
+const getMovie = async (req, res) => {
     try {
         const movies = await movieSchema.find()
         res.status(200).json(movies)
@@ -9,7 +9,7 @@ const getMovie = async(req,res) => {
     }
 }
 
-const postMovie = async (req,res) => {
+const postMovie = async (req, res) => {
     try {
         const newMovie = movieSchema({
             name: req.body.name,
@@ -29,4 +29,13 @@ const postMovie = async (req,res) => {
     }
 }
 
-module.exports = { getMovie, postMovie} 
+const deleteMovie = async (req, res) => {
+    try {
+        await movieSchema.deleteOne({ _id: req.params.id })
+        res.status(203).send("<h1>Movie Deleted</h1>")
+    } catch (error) {
+        res.send(error.message)
+    }
+}
+
+module.exports = { getMovie, postMovie, deleteMovie } 
