@@ -15,7 +15,7 @@ const createUser = async (req, res) => {
     try {
         bcrypt.hash(req.body.password, saltRounds, async function (err, hash) {
             const newUser = register({
-                fullname: req.body.fullname,
+                fullname: req.body.fullname.toLowerCase(),
                 mobileNo: req.body.mobileNo,
                 email: req.body.email,
                 gender: req.body.gender,
@@ -40,12 +40,12 @@ const loginUser = async (req, res) => {
                     res.status(202).json(loginData)
                 }
                 else {
-                    res.status(500).send(err)
+                    res.status(203).send(err)
                 }
             })
         }
         else {
-            res.status(500).send("Client not found")
+            res.status(204).send("Client not found")
         }
 
     } catch (error) {
